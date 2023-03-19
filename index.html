@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="the famous tic-tac-toe, called this x and o cos of the letters used to play the game and also cross and not">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="cross, not, x, o, tic, tac, toe..., ticky tic 'LoL'.">
+    <title>Da-Hubb Tic-Tac-Toe/ Frontend Mentor/ zDevTutor</title>
+    <!-- logo of the title head -->
+    <link rel="icon" href="images/favicon-32x32.png">
+    <!-- the external styling of the project -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- the script -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="loading show">
+        <div class="wrapload">
+            <h1 class="load">
+                <span>D</span>
+                <span>A</span>
+                <span>-</span>
+                <span>H</span>
+                <span>U</span>
+                <span>B</span>
+                <span>B</span>
+            </h1>
+            <img src="images/loading.gif" alt="" class="loadimg">
+        </div>
+    </div>
+    <!-- the winning modal -->
+    <div class="alert">
+        <section class="alertmain">
+            <p class="player">Player <span class="num"></span> wins!</p>
+            <h1 class="win"><img src="images/SVG/icon-x.svg" alt="" class="winimg"> TAKES THE ROUND</h1>
+            <!-- key ops -->
+            <article class="keyops">
+                <button class="quit">
+                    quit
+                </button>
+                <button class="nextround">
+                    next round
+                </button>
+            </article>
+        </section>
+    </div>
+    <!-- the game board choices -->
+    <section class="game_board_choices show">
+        <!-- the x and o symbol -->
+        <article class="optleta">
+            <img src="images/SVG/icon-x.svg" alt="x" class="x_opt">
+            <img src="images/SVG/icon-o.svg" alt="o" class="o_opt">
+        </article>
+        <!-- the choice choose board -->
+        <article class="the_choice">
+            <h3 class="choose">Pick player 1's mark</h3>
+            <button class="pickbtn">
+                <div class="imgwrap">
+                    <img src="images/SVG/icon-x-default.svg" alt="" class="pickx">
+                    <img src="images/SVG/icon-o-default.svg" alt="" class="picko active">
+                </div>
+                <span class="slidebg"></span>
+            </button>
+            <p class="note">remember: x Goes first</p>
+        </article>
+        <!-- who we playing with -->
+        <section class="opponent">
+            <button type="button" class="artificial_intelligence" data-id="ai">
+                NEW GAME(vs cpu)
+            </button>
+            <button type="button" class="another_player" data-id="human">
+                NEW GAME (vs player)
+            </button>
+        </section>
+    </section>
+    <!-- playing starts -->
+    <main class="playing_table">
+        <section class="player_turns">
+            <div class="player_turnsimg">
+                <img src="images/SVG/icon-x-default.svg" class="xturn" alt="">
+                <img src="images/SVG/icon-o.svg" class="oturn" alt="">
+            </div>
+            
+            <span class="who_gets_to_play">
+                <img src="images/SVG/icon-x-default.svg" alt="" class="turnimg">
+                Turn
+            </span>
+
+            <span class="return">
+                <img src="images/SVG/icon-restart.svg" alt="">
+            </span>
+        </section>
+        
+        <table class="desk">
+            <tr>
+                <td class="box"></td>
+                <td class="box"></td>
+                <td class="box"></td>
+            </tr>
+            <tr>
+                <td class="box"></td>
+                <td class="box"></td>
+                <td class="box"></td>
+            </tr>
+            <tr>
+                <td class="box"></td>
+                <td class="box"></td>
+                <td class="box"></td>
+            </tr>
+        </table>
+
+        <section class="result">
+            <div class="resultbox p1">
+                <h3 class="gamer gamerx">X(<span class="whox"></span>)</h3>
+                <h2 class="score">77</h2>
+            </div>
+            <div class="resultbox tie">
+                <h3 class="gamer">TIES</h3>
+                <h2 class="score">77</h2>
+            </div>
+            <div class="resultbox p2">
+                <h3 class="gamer gamero">O (<span class="whoo"></span>)</h3>
+                <h2 class="score">77</h2>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

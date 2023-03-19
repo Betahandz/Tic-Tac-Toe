@@ -1,0 +1,392 @@
+@font-face {
+    font-family: openbold;
+    src: url(fonts/OpenSans_Condensed-SemiBold.ttf);
+}
+@font-face {
+    font-family: openmed;
+    src: url(fonts/OpenSans_Condensed-Medium.ttf);
+}
+@font-face {
+    font-family: openreg;
+    src: url(fonts/OpenSans_Condensed-Regular.ttf);
+}
+:root {
+    /* typo */
+    --ob: openbold;
+    --om: openmed;
+    --or: openreg;
+    /* color styles */
+    --light-blue: #31c3bd;
+    --light-blue-shadow: #06524f;
+    --light-yellow: #f2b137;
+    --light-yellow-shadow: #f2b13780;
+    --bg: #1f3641;
+    --bg2: #1d303a;
+    --bgshadow: #172127;
+    --textlight: #a8bfc9;
+}
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--bg2);
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+.alert {
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.507);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.alertmain {
+    width: 100%;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+.player {
+    font-family: var(--or);
+    color: var(--textlight);
+    text-transform: uppercase;
+}
+.win {
+    margin-top: 20px;
+    color: var(--light-blue);
+    font-family: var(--ob);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 40px;
+}
+.winimg {
+    width: 30px;
+}
+.keyops {
+    margin-top: 20px;
+}
+.keyops button {
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    text-transform: uppercase;
+    font-family: var(--om);
+    color: var(--bg);
+    cursor: pointer;
+}
+button[class = "quit"] {
+    background-color: var(--textlight);
+}
+button[class = "nextround"] {
+    background-color: var(--light-yellow);
+}
+.game_board_choices, .playing_table {
+    width: 70%;
+    max-width: 500px;
+    margin: auto;
+    display: none;
+}
+.optleta {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.optleta img {
+    width: 30px;
+}
+.the_choice {
+    width: 100%;
+    min-height: 200px;
+    background-color: var(--bg);
+    border-radius: 20px;
+    box-shadow: 0 15px 3px var(--bgshadow);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--textlight);
+    padding: 20px;
+    margin-top: 10px;
+}
+.choose {
+    font-family: var(--ob);
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.pickbtn {
+    width: 100%;
+    height: 70px;
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--bgshadow);
+    border: none;
+    outline: none;
+}
+.slidebg {
+    width: 50%;
+    height: 100%;
+    background-color: var(--textlight);
+    display: block;
+    border-radius: 10px;
+    transition: .5s;
+}
+.imgwrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 60px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.imgwrap img {
+    width: 45px;
+}
+.note {
+    text-transform: uppercase;
+    font-family: var(--or);
+}
+.opponent {
+    width: 100%;
+    margin-top: 50px;
+    min-height: 150px;
+}
+.opponent button {
+    width: 100%;
+    text-transform: uppercase;
+    color: var(--bg);
+    font-family: var(--ob);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.artificial_intelligence {
+    background-color: var(--light-yellow);
+    box-shadow: 0 5px 5px var(--light-yellow-shadow);
+}
+.another_player {
+    margin-top: 20px;
+    background-color: var(--light-blue);
+    box-shadow: 0 5px 5px var(--light-blue-shadow);
+}
+.xturn {
+    filter: invert(67%)
+    sepia(98%)
+    saturate(335%) 
+    hue-rotate(123deg)
+    brightness(84%)
+    contrast(88%);
+}
+.turnimg {
+    filter: invert(80%)
+    sepia(17%)
+    saturate(249%) 
+    hue-rotate(153deg)
+    brightness(90%)
+    contrast(96%);
+}
+.player_turns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+}
+.player_turnsimg {
+    cursor: none;
+}
+.player_turns img {
+    width: 25px;
+}
+.who_gets_to_play {
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 3px 10px;
+    font-size: 20px;
+    color: var(--textlight);
+    font-family: var(--ob);
+    box-shadow: 0 5px 10px var(--bgshadow);
+    border-radius: 10px;
+    text-transform: uppercase;
+    cursor: none;
+}
+.return {
+    background-color: var(--textlight);
+    padding: 7px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 15px var(--bgshadow);
+    cursor: pointer;
+
+}
+.return img {
+    width: 20px;
+}
+.desk, tr, .box {
+    border: none;
+    outline: none;
+    /* border-collapse: collapse; */
+}
+.desk {
+    width: 100%;
+    /* background-color: white; */
+    height: 200px;
+}
+.desk tr {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-between;
+    min-height: 30%;
+}
+.box {
+    width: calc(100%/3 - 5px);
+    gap: 10px;
+    height: 120px;
+    background-color: var(--bg);
+    backdrop-filter: blur(10px) saturate(100%);
+    box-shadow: 0 0 15px 5px var(--bgshadow);
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.box:active {
+    transform: scale(.9);
+}
+.input {
+    width: 70%;
+}
+.result {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.resultbox {
+    width: calc((100%/3) - 5px);
+    border-radius: 10px;
+    min-height: 30px;
+    color: var(--bg);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.p1 {
+    background-color: var(--light-blue);
+}
+.tie {
+    background-color: var(--textlight);
+}
+.p2 {
+    background-color: var(--light-yellow);
+}
+.gamer {
+    font-family: var(--om);
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.score {
+    font-family: var(--ob);
+    font-size: 17px;
+}
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.wrapload {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.load {
+    font-family: var(--ob);
+    font-size: 20vw;
+    color: var(--bg);
+    filter: drop-shadow(-1px -1px 0 var(--textlight))
+    drop-shadow(5px 5px 3px var(--bgshadow));
+    animation: swim 7s ease-in-out infinite reverse;
+}
+@keyframes swim {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-100px);
+        opacity: 1;
+    }
+}
+/*************** MEDIA QUERY ********/
+@media screen and (max-width: 768px) {
+    .choose {
+        font-size: 20px;
+    }
+    .win {
+        font-size: 25px;
+    }
+}
+/***** class for the slide to trans ****/
+.trans {
+    transform: translateX(100%);
+}
+.show {
+    display: block;
+}
+.active {
+    filter: invert(80%)
+    sepia(17%)
+    saturate(249%) 
+    hue-rotate(153deg)
+    brightness(90%)
+    contrast(96%);
+}
